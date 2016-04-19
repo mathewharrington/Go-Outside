@@ -7,7 +7,7 @@ More of a practice exercise than anything else.
 
 * [Flickr API] (https://www.flickr.com/services/api/) 
 * [OpenWeatherMap API] (openweathermap.org/api)
-* Laravel Framework (https://laravel.com/)
+* [Laravel Framework] (https://laravel.com/)
 
 ## Ideas For More Features:
 
