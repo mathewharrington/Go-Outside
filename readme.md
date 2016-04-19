@@ -5,15 +5,15 @@ More of a practice exercise than anything else.
 
 ## Go Outside Makes Use of:
 
-*[Flickr API] (https://www.flickr.com/services/api/) 
-*[OpenWeatherMap API] (openweathermap.org/api)
-*Laravel Framework (https://laravel.com/)
+* [Flickr API] (https://www.flickr.com/services/api/) 
+* [OpenWeatherMap API] (openweathermap.org/api)
+* Laravel Framework (https://laravel.com/)
 
 ## Ideas For More Features:
 
-*Incorporate images from 500px also
-*AJAX - would only need landing page and send images without having to reload/redirect
-*More attractive grid - explore any CSS frameworks that play nicely with images
+* Incorporate images from 500px also
+* AJAX - would only need landing page and send images without having to reload/redirect
+* More attractive grid - explore any CSS frameworks that play nicely with images
 
 ## Use:
 
