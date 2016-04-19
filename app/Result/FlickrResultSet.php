@@ -79,8 +79,8 @@ class FlickrResultSet implements iResultSet {
          $completeURL .= $photoFrag['id'];
          $completeURL .= '_';
          $completeURL .= $photoFrag['secret'];
-         // _n returns small (320px on longest side) photos
-         $completeURL .= '_q.jpg';
+         // for image sizes see: https://www.flickr.com/services/api/misc.urls.html
+         $completeURL .= '_n.jpg';
          array_push($photoURLs, $completeURL);
       }
       return $photoURLs;

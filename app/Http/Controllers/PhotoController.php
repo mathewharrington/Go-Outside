@@ -28,6 +28,7 @@ class PhotoController extends Controller
       $FlickrAPI->setOption("tags", "melbourne");
       $FlickrAPI->setOption("api_key", getenv('FLICKR_API_KEY'));
       $FlickrAPI->setOption("per_page", 20);
+      $FlickrAPI->setOption("orientation", "landscape");
 
       $flickrResponse = $FlickrAPI->get();
       $FlickrResultSet->addResults($flickrResponse);
