@@ -28,7 +28,11 @@ class OpenWeatherAPI implements iAPIAdapter {
       $this->options("appid" => getenv('OPEN_WEATHER_API_KEY'));
       $this->options("units" => getenv('UNITS'));
    }
-
+ 
+   public function responseCode()
+   {
+      //TODO
+   }
    /*
    * Function to send the request, calls the client to actually perform the
    * request.
