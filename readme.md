@@ -6,7 +6,7 @@ More of a practice exercise than anything else.
 ## Go Outside Makes Use of:
 
 * [Flickr API] (https://www.flickr.com/services/api/) 
-* [OpenWeatherMap API] (openweathermap.org/api)
+* [OpenWeatherMap API] (http://www.openweathermap.org/api)
 * [Laravel Framework] (https://laravel.com/)
 * [Skeleton Responsive CSS Framework] (http://getskeleton.com/)
 
