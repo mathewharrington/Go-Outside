@@ -18,8 +18,16 @@ use App\Result;
 
 class WeatherController extends Controller
 {
-    $OpenWeatherClient = new \App\Pest\Pest(getenv('OPEN_WEATHER_BASE_URL'));
-    $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
-    // TODO 
-    // $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
+   public function load()
+   {
+      $OpenWeatherClient = new \App\Pest\Pest(getenv('OPEN_WEATHER_BASE_URL'));
+      $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
+      $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
+
+      $OpenWeatherAPI->setOption("city", "melbourne");
+      $response = $OpenWeatherAPI->get();
+      //$OpenWeatherResultSet->addResults($response);
+      //return view('pages.ow');
+      //return view('pages.ow', ['data' => $owData]);
+   }
 }
