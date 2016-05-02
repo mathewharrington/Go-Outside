@@ -27,11 +27,11 @@ class FlickrAPI implements iAPIAdapter {
    {
       $this->client = $pestClient;
       // setup some default options for request
-      $this->options("tagMode" => "all");
-      $this->options("format" => "json");
-      $this->options("safeSearch" => "1");
-      $this->options("noJSONCallback" => "1");
-      $this->options("extras" => "views");
+      $this->options["tagMode"] = "all";
+      $this->options["format"] = "json";
+      $this->options["safeSearch"] = "1";
+      $this->options["noJSONCallback"] = "1";
+      $this->options["extras"] = "views";
    }
 
    /*
@@ -87,7 +87,7 @@ class FlickrAPI implements iAPIAdapter {
       return $formattedParams;
    }
 
-   public funcition responseCode()
+   public function responseCode()
    {
       //TODO
    }
