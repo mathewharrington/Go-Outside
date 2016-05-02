@@ -19,3 +19,6 @@ Route::get('/about', 'PagesController@about');
 
 // test page - recap
 Route::get('/test', 'PhotoController@load');
+
+// testing open weather call
+Route::get('/ow', 'WeatherController@load');
