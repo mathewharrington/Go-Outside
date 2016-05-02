@@ -14,8 +14,6 @@
 namespace App\API_Adapter;
 use App\Pest;
 
-require_once 'iAPIAdapter.php';
-
 class FlickrAPI implements iAPIAdapter {
 
    // options for request
