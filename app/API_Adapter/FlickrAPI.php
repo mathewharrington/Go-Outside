@@ -18,20 +18,20 @@ require_once 'iAPIAdapter.php';
 
 class FlickrAPI implements iAPIAdapter {
 
-   // default options for request
-   private $options = array(
-      "tagMode" => "all",
-      "format" => "json",
-      "safeSearch" => "1",
-      "noJSONCallback" => "1",
-      "extras" => "views"
-   );
+   // options for request
+   private $options = array();
 
    private $client;
 
    function __construct(\App\Pest\Pest $pestClient)
    {
       $this->client = $pestClient;
+      // setup some default options for request
+      $this->options("tagMode" => "all");
+      $this->options("format" => "json");
+      $this->options("safeSearch" => "1");
+      $this->options("noJSONCallback" => "1");
+      $this->options("extras" => "views");
    }
 
    /*
