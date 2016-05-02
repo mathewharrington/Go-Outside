@@ -86,10 +86,5 @@ class FlickrAPI implements iAPIAdapter {
       }
       return $formattedParams;
    }
-
-   public function responseCode()
-   {
-      //TODO
-   }
 }
 ?>

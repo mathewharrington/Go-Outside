@@ -8,7 +8,6 @@ namespace App\API_Adapter;
 
 interface iAPIAdapter {
    public function get();
-   public function responseCode();
 }
 
 ?>

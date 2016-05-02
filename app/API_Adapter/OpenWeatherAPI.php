@@ -25,14 +25,12 @@ class OpenWeatherAPI implements iAPIAdapter {
    function __construct(\App\Pest\Pest $pestClient)
    {
       $this->client = $pestClient;
-      $this->options("appid" => getenv('OPEN_WEATHER_API_KEY'));
-      $this->options("units" => getenv('UNITS'));
+      //$this->options("appid" => getenv('OPEN_WEATHER_API_KEY'));
+      $this->options["appid"] = getenv('OPEN_WEATHER_API_KEY');
+      //$this->options("units" => getenv('UNITS'));
+      $this->options["units"] = getenv('UNITS');
    }
- 
-   public function responseCode()
-   {
-      //TODO
-   }
+
    /*
    * Function to send the request, calls the client to actually perform the
    * request.
@@ -45,12 +43,19 @@ class OpenWeatherAPI implements iAPIAdapter {
       return $response;
    }
 
-   // add city to options
-   public function addCity($city)
+   /*
+   * Function to set various options to add on to the Flickr request. See
+   * https://www.flickr.com/services/api/flickr.photos.search.html for available
+   * arguments. No checking is done here, it's up to the caller to ensure that
+   * appropriate options are being set with appropriate values.
+   *
+   * @param String $opt The option to set
+   * @param String $value The value you want to set the option to
+   */
+   public function setOption($opt, $value)
    {
-      $this->options("city" => $city);
+      $this->options[$opt] = $value;
    }
-
 }
 
  ?>
