@@ -24,10 +24,16 @@ class WeatherController extends Controller
       $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
       $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
 
-      $OpenWeatherAPI->setOption("city", "melbourne");
+      $OpenWeatherAPI->setParam("city", "melbourne");
       $response = $OpenWeatherAPI->get();
-      //$OpenWeatherResultSet->addResults($response);
-      //return view('pages.ow');
-      //return view('pages.ow', ['data' => $owData]);
+      $OpenWeatherResultSet->addResults($response);
+      $OpenWeatherResultSet->parse();
+
+      // build meaningful string
+      $weather = "Current weather for ";
+      $weather .= $OpenWeatherResultSet->getCityName();
+      $weather .= " is ";
+      $weather .= $OpenWeatherResultSet->getWeatherDesc();
+      return view('pages.ow', ['data' => $weather]);
    }
 }
