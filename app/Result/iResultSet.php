@@ -8,7 +8,6 @@
 namespace App\Result;
 
 interface iResultSet {
-   public function count();
    public function parse();
 }
 
