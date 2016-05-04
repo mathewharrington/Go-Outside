@@ -25,6 +25,7 @@ class FlickrAPI implements iAPIAdapter {
    {
       $this->client = $pestClient;
       // setup some default options for request
+      $this->options["api_key"] = getenv('FLICKR_API_KEY');
       $this->options["tagMode"] = "all";
       $this->options["format"] = "json";
       $this->options["safeSearch"] = "1";
@@ -40,7 +41,7 @@ class FlickrAPI implements iAPIAdapter {
    */
    public function get()
    {
-      $opts = self::formatOptions();
+      $opts = self::formatParams();
       $response = $this->client->get($opts);
       return $response;
    }
@@ -54,17 +55,9 @@ class FlickrAPI implements iAPIAdapter {
    * @param String $opt The option to set
    * @param String $value The value you want to set the option to
    */
-   public function setOption($opt, $value)
+   public function setParam($opt, $value)
    {
-      // api key must be first argument sent in request
-      if($opt == "api_key")
-      {
-         $this->options = array($opt => $value) + $this->options;
-      }
-      else
-      {
-         $this->options[$opt] = $value;
-      }
+      $this->options[$opt] = $value;
    }
 
    /*
@@ -75,7 +68,7 @@ class FlickrAPI implements iAPIAdapter {
    *
    * @return String The request-ready string
    */
-   private function formatOptions()
+   private function formatParams()
    {
       $formattedParams = '';
       foreach($this->options as $key => $val)

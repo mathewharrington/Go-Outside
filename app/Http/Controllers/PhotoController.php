@@ -25,10 +25,9 @@ class PhotoController extends Controller
       $FlickrResultSet = new \App\Result\FlickrResultSet();
 
       // add options for flickr query
-      $FlickrAPI->setOption("tags", "melbourne");
-      $FlickrAPI->setOption("api_key", getenv('FLICKR_API_KEY'));
-      $FlickrAPI->setOption("per_page", 20);
-      $FlickrAPI->setOption("orientation", "landscape");
+      $FlickrAPI->setParam("tags", "melbourne");
+      $FlickrAPI->setParam("per_page", 20);
+      $FlickrAPI->setParam("orientation", "landscape");
 
       $flickrResponse = $FlickrAPI->get();
       $FlickrResultSet->addResults($flickrResponse);

@@ -8,6 +8,7 @@ namespace App\API_Adapter;
 
 interface iAPIAdapter {
    public function get();
+   public function setParam($param, $value);
 }
 
 ?>
