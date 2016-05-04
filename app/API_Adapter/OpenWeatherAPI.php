@@ -1,7 +1,7 @@
 <?php
 /*
-* Class specific to OpenWeather's api, implements the super-simple (read:one-function)
-* adapter interface, but this is ok since this is just a practice app. Responsible
+* Class specific to OpenWeather's api, implements the super-simple adapter
+* interface, but this is ok since this is just a practice app. Responsible
 * for being an inbetween for my code and the REST client. Just needs to GET at
 * this stage, parsing will take place in the result set class.
 *
@@ -31,15 +31,16 @@ class OpenWeatherAPI implements iAPIAdapter {
 
    /*
    * Function to send the request, calls the client to actually perform the
-   * request.
+   * request. Raw response will be dealt with in the ResultSet class.
    *
    * @return The raw (json) response
    */
    public function get()
    {
-      $extra = self::formatOptions();
-      print($extra);
-      //$response = $this->client->get($extra);
+      $extra = self::formatParams();
+      //print($extra);
+      $response = $this->client->get($extra);
+      print_r($response);
       //return $response;
    }
 
@@ -52,66 +53,35 @@ class OpenWeatherAPI implements iAPIAdapter {
    * @param String $opt The option to set
    * @param String $value The value you want to set the option to
    */
-   public function setOption($opt, $value)
+   public function setParam($opt, $value)
    {
       $this->options[$opt] = $value;
    }
 
    /*
    * Function to format the extra values for sending in request to Flickr, need
-   * to add ampersands and equal signs between options and values.
-   *
-   * TODO make options a comma separated string that will be appended to the URL
+   * to add ampersands and equal signs between options and values. City must be
+   * first param in string.
    *
    * @return String The request-ready string
    */
-   private function formatOptions()
+   private function formatParams()
    {
       $formattedParams = '';
       foreach($this->options as $key => $val)
       {
          if($key == "city")
          {
-            $formattedParams .= $val;
-         }
-         elseif ($key == "appid")
-         {
-            $formattedParams .= "&" . $key . "=" . $val;
+            //$formattedParams .= $val;
+            $formattedParams = $val . $formattedParams;
          }
          else
          {
-            $formattedParams .= $key . "=" . $val;
+            $formattedParams .= "&" . $key . "=" . $val;
          }
       }
       return $formattedParams;
    }
 }
 
- ?>
-
-
- <!-- function openWeatherRequest($city)
-{
-   $openWeatherUrl = OPEN_WEATHER_BASE_URL;
-   $openWeatherUrl .= $city;
-   $openWeatherUrl .= '&appid=' . OPEN_WEATHER_API_KEY;
-   $openWeatherUrl .= '&units=' . UNITS;
-
-   // process response
-   $openWeatherjson = file_get_contents("$openWeatherUrl");
-   $openWeatherjson = json_decode($openWeatherjson, true);
-
-   // get weather description
-   $weatherDesc = $openWeatherjson['weather'][0]['description'];
-   $weatherTag = $openWeatherjson['weather'][0]['main'];
-
-   // get coordinates
-   $lat = $openWeatherjson['coord']['lat'];
-   $long = $openWeatherjson['coord']['lon'];
-   $results = array();
-   $results['desc'] = $weatherDesc;
-   $results['weatherTag'] = $weatherTag;
-   $results['lat'] = $lat;
-   $results['long'] = $long;
-   return $results;
-} -->
+?>
