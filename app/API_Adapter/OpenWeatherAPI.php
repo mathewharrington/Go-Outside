@@ -38,10 +38,8 @@ class OpenWeatherAPI implements iAPIAdapter {
    public function get()
    {
       $extra = self::formatParams();
-      //print($extra);
       $response = $this->client->get($extra);
-      print_r($response);
-      //return $response;
+      return $response;
    }
 
    /*
