@@ -24,6 +24,7 @@ class WeatherController extends Controller
       $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
       $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
 
+      // harcode for now, will come from form input 
       $OpenWeatherAPI->setParam("city", "melbourne");
       $response = $OpenWeatherAPI->get();
       $OpenWeatherResultSet->addResults($response);
