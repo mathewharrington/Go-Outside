@@ -11,7 +11,7 @@
 <?php
 echo Form::label('city', 'Enter City');
 echo Form::text('city', 'Paris', array('class' => 'u-full-width'));
-echo Form::button('Search', array('class' => 'button-primary'));
+echo Form::button('Search', array('class' => 'button-primary', 'type' => 'submit'));
 ?>
 {{ Form::close() }}
 
