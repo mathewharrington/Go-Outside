@@ -18,14 +18,14 @@ use App\Result;
 
 class WeatherController extends Controller
 {
-   public function load()
+   public function load(Request $request)
    {
       $OpenWeatherClient = new \App\Pest\Pest(getenv('OPEN_WEATHER_BASE_URL'));
       $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
       $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
 
-      // harcode for now, will come from form input 
-      $OpenWeatherAPI->setParam("city", "melbourne");
+      // harcode for now, will come from form input
+      $OpenWeatherAPI->setParam("city", $request->input('city'));
       $response = $OpenWeatherAPI->get();
       $OpenWeatherResultSet->addResults($response);
       $OpenWeatherResultSet->parse();
