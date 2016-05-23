@@ -1,28 +1,20 @@
 @extends('layout')
-
 @section('content')
 <section class="header">
    <h2>Go Outside</h2>
 </section>
-<!--
-<form method="post" action="WeatherController@load">
--->
-{{ Form::open(array('action' => 'WeatherController@load')) }}
-   <div class="row">
-      <div class="six columns">
-         <!--
-         <label for="cityInput">City Name</label>
-         <input class="u-full-width" type="text">
-         -->
-         echo Form::label('cityInput', 'City Name');
-         echo Form::text('cityInput');
-      </div>
-      <div class="six columns">
-         <label for=""></label>
-      </div>
+
+<div class="row">
+   <div class="six columns">
+
+{{ Form::open(array('action' => 'WeatherController@load', 'method' => 'get')) }}
+<?php
+echo Form::label('city', 'Enter City');
+echo Form::text('city', 'Paris', array('class' => 'u-full-width'));
+echo Form::button('Search', array('class' => 'button-primary'));
+?>
+{{ Form::close() }}
+
    </div>
-   <div class="row">
-      <input class="button-primary" type="submit" value="Submit">
-   </div>
-</form>
+</div>
 @stop
