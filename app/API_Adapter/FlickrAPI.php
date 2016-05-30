@@ -57,7 +57,14 @@ class FlickrAPI implements iAPIAdapter {
    */
    public function setParam($opt, $value)
    {
-      $this->options[$opt] = $value;
+      if(isset($this->options[$opt]))
+      {
+         $this->options[$opt] .=  "," . $value;
+      }
+      else
+      {
+         $this->options[$opt] = $value;
+      }
    }
 
    /*
