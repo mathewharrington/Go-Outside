@@ -14,13 +14,30 @@ echo Form::text('city', 'Paris', array('class' => 'u-full-width'));
 echo Form::button('Search', array('class' => 'button-primary', 'type' => 'submit'));
 ?>
 {{ Form::close() }}
-<?php
-   if(isset($weatherResults))
-   {
-      print_r($weatherResults);
-   }
-   unset($weatherResults);
-?>
+
    </div>
 </div>
+
+@if(isset($photoResponse))
+<?php
+// counters for rows.
+$i = 0;
+$j = 0;
+?>
+@foreach($photoResponse as $photo)
+<?php if(($i % 3) === 0)
+      {
+         echo "<div class='row'>";
+         $j = 0;
+      }
+?>
+<div class="one-third column">
+<img src="{{ $photo }}" class="u-max-full-width">
+</div>
+<?php if($j === 2) echo "</div>"; ?>
+<?php $i++; $j++ ?>
+@endforeach
+   </div>
+</div>
+@endif
 @stop
