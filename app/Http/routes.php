@@ -13,12 +13,13 @@
 
 // homepage
 Route::get('/', 'PagesController@home');
+Route::post('/', array('uses' => 'PagesController@load'));
 
 // about page
-Route::get('/about', 'PagesController@about');
+//Route::get('/about', 'PagesController@about');
 
 // test page - recap
-Route::get('/test', 'PhotoController@load');
+//Route::get('/test', 'PhotoController@load');
 
 // testing open weather call
-Route::get('/ow', 'WeatherController@load');
+//Route::get('/ow', 'WeatherController@load');
