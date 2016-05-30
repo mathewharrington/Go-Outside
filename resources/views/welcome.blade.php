@@ -18,6 +18,14 @@ echo Form::button('Search', array('class' => 'button-primary', 'type' => 'submit
    </div>
 </div>
 
+@if(isset($weatherDesc))
+<div class="row">
+   <div class="twelve columns">
+      <h3>{{ $weatherDesc }}</h3>
+   </div>
+</div>
+@endif
+
 @if(isset($photoResponse))
 <?php
 // counters for rows.
