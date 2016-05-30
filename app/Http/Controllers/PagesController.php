@@ -46,6 +46,8 @@ class PagesController extends Controller
          $OpenWeatherResultSet->addResults($response);
          $OpenWeatherResultSet->parse();
 
+         $weatherDesc = "Weather in " . $city . " is " . $OpenWeatherResultSet->getWeatherDesc();
+
          /**
          * BEGIN FLICKR CALLS
          */
@@ -57,8 +59,12 @@ class PagesController extends Controller
 
          // add options for flickr query
          $FlickrAPI->setParam("tags", $city);
+         $FlickrAPI->setParam("tags", $OpenWeatherResultSet->getShortWeatherDesc());
          $FlickrAPI->setParam("per_page", 20);
          $FlickrAPI->setParam("orientation", "landscape");
+         $FlickrAPI->setParam("tag_mode", "all");
+         // this limits results to those found in Flickr's Project Weather group.
+         $FlickrAPI->setParam("group_id", "1463451@N25");
 
          $flickrResponse = $FlickrAPI->get();
          $FlickrResultSet->addResults($flickrResponse);
@@ -67,7 +73,7 @@ class PagesController extends Controller
 
          $photoURLs = $FlickrResultSet->buildPhotoURLArray();
 
-         return view('welcome', ['photoResponse' => $photoURLs]);
+         return view('welcome', ['photoResponse' => $photoURLs, 'weatherDesc' => $weatherDesc]);
       }
 
       catch(Pest_Exception $e)
