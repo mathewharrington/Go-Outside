@@ -1,7 +1,12 @@
 <?php
-
+/*
+* Pages Controller, handles basic homepage load and form submission (I chose to
+* keep this a one-page application for simplicity). Each function returns the
+* homepage view, with extra input if we have it.
+*
+* @author Mathew Harrington
+*/
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Pest;
 use App\API_Adapter;
@@ -18,7 +23,8 @@ class PagesController extends Controller
    * Function to handle the form submission... and more!
    * Consider breaking this into a couple of private functions.
    * This takes the request object containing form values and first calls the
-   * open weather api for weather results.
+   * open weather api for weather results. From that it calls the Flickr API
+   * to obtain a set of photos of that city under the current weather conditions.
    *
    * @param Request The request object containing the form value(s).
    * @return View Homepage and array of weather result.
@@ -56,7 +62,7 @@ class PagesController extends Controller
 
          $flickrResponse = $FlickrAPI->get();
          $FlickrResultSet->addResults($flickrResponse);
-         // this step is important - pest seems to add a few of its own characters to the response
+         // this step is important - Pest seems to add a few of its own characters to the response
          $FlickrResultSet->parse();
 
          $photoURLs = $FlickrResultSet->buildPhotoURLArray();
@@ -73,12 +79,5 @@ class PagesController extends Controller
       {
          return view('welcome');
       }
-
-      // build meaningful string
-      // $weather = "Current weather for ";
-      // $weather .= $OpenWeatherResultSet->getCityName();
-      // $weather .= " is ";
-      // $weather .= $OpenWeatherResultSet->getWeatherDesc();
-      // return view('welcome', ['weatherResults' => $weather]);
    }
 }
