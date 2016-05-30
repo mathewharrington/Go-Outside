@@ -12,9 +12,9 @@ More of a practice exercise than anything else.
 
 ## Ideas For More Features:
 
-* - [ ] Incorporate images from 500px also
-* - [ ] AJAX - would only need landing page and send images without having to reload/redirect
-* - [ ] More attractive grid - explore any CSS frameworks that play nicely with images - no sliders though!
+- [ ] Incorporate images from 500px also
+- [ ] AJAX - would only need landing page and send images without having to reload/redirect
+- [ ] More attractive grid - explore any CSS frameworks that play nicely with images - no sliders though!
 
 ## Use:
 
