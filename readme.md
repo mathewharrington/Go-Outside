@@ -7,7 +7,7 @@ More of a practice exercise than anything else.
 
 * [Flickr API] (https://www.flickr.com/services/api/) 
 * [OpenWeatherMap API] (http://www.openweathermap.org/api)
-* [Laravel Framework] (https://laravel.com/)
+* [Laravel Framework v5.2.32] (https://laravel.com/)
 * [Skeleton Responsive CSS Framework] (http://getskeleton.com/)
 
 ## Ideas For More Features:
