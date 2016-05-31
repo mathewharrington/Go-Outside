@@ -42,15 +42,14 @@ class PagesController extends Controller
          * in every request. It is safe to assume the $errors variable is always
          * defined and can be safely used.
          */
+         $this->validate($request, ['city' => 'required|regex:/^[\pL\s]+$/u']);
 
-         $this->validate($request, ['city' => 'required|alpha']);
+         // cleanup form value
+         $city = str_replace(' ','', $request->input('city'));
 
          $OpenWeatherClient = new \App\Pest\Pest(getenv('OPEN_WEATHER_BASE_URL'));
          $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
          $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
-
-         // cleanup form value
-         $city = str_replace(' ','', $request->input('city'));
 
          // extract city from request object
          $OpenWeatherAPI->setParam("city", $city);
@@ -58,7 +57,7 @@ class PagesController extends Controller
          $OpenWeatherResultSet->addResults($response);
          $OpenWeatherResultSet->parse();
 
-         $weatherDesc = "Weather in " . $city . " is " . $OpenWeatherResultSet->getWeatherDesc();
+         $weatherDesc = "Weather in " . $request->input('city') . " is " . $OpenWeatherResultSet->getWeatherDesc();
 
          /**
          * BEGIN FLICKR CALLS
