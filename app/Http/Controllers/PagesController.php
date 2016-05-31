@@ -57,7 +57,7 @@ class PagesController extends Controller
          $OpenWeatherResultSet->addResults($response);
          $OpenWeatherResultSet->parse();
 
-         $weatherDesc = "Weather in " . $request->input('city') . " is " . $OpenWeatherResultSet->getWeatherDesc();
+         $weatherDesc = "Weather in " . ucwords($request->input('city')) . " is " . $OpenWeatherResultSet->getWeatherDesc();
 
          /**
          * BEGIN FLICKR CALLS
