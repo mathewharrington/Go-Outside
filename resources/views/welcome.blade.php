@@ -1,7 +1,10 @@
 @extends('layout')
 @section('content')
 <section class="header">
-   <h2>Go Outside</h2>
+   <h2>Go Outside    <a href="https://github.com/mathewharrington/Go_Outside" title="Go Outside GitHub" target="_blank">
+         <img src="/img/GitHub-Mark-32px.png"/>
+      </a></h2>
+
 </section>
 
 <div class="row">
