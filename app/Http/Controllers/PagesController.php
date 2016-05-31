@@ -33,6 +33,18 @@ class PagesController extends Controller
    {
       try
       {
+         /* Trying out laravels validation, required field and must be only
+         * letters, execution stops if this fails, laravel automatically
+         * redirects the user to their previous location ('/').
+         * Also, all of the validation errors will be 'flashed' to the session,
+         * whatever that means?
+         * An $errors variable will always be available in all of your views
+         * in every request. It is safe to assume the $errors variable is always
+         * defined and can be safely used.
+         */
+
+         $this->validate($request, ['city' => 'required|alpha']);
+
          $OpenWeatherClient = new \App\Pest\Pest(getenv('OPEN_WEATHER_BASE_URL'));
          $OpenWeatherAPI = new \App\API_Adapter\OpenWeatherAPI($OpenWeatherClient);
          $OpenWeatherResultSet = new \App\Result\OpenWeatherResultSet();
