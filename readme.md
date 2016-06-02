@@ -16,9 +16,7 @@ More of a practice exercise than anything else.
 - [ ] AJAX - would only need landing page and send images without having to reload/redirect
 - [ ] More attractive grid - explore any CSS frameworks that play nicely with images - no sliders though!
 
-## Use:
 
-Feel free to add/remove/burn.
 
 
 
