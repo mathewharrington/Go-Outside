@@ -1,6 +1,6 @@
 ## Go Outside
 
-Adapted from and extending a uni project. Solves no real world problem. Displays images of a given city in current weather conditions. 
+Web application adapted from and extending a uni project. Solves no real world problem. Displays images of a given city in current weather conditions. 
 More of a practice exercise than anything else.
 
 ## Go Outside Makes Use of:
